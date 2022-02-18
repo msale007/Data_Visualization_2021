@@ -1,0 +1,175 @@
+---
+title: "HW 1, CS 625, Fall 2021"
+author: "Maryam Salehi"
+date: Sep 9, 2021
+output: rmarkdown::github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Git, GitHub
+
+1. *What is your GitHub username?*
+msale007 
+
+2. *What is the URL of your remote GitHub repo (created through Mr. Kennedy's exercises)?*
+
+<https://github.com/msale007/Myrepo-.git>
+
+
+
+## R
+
+The command below will load the tidyverse package.  If you have installed R, RStudio, and the tidyverse package, it should display a list of loaded packages and their versions
+```{r}
+library(tidyverse)
+```
+
+## R Markdown 
+
+1. *Create a bulleted list with at least 3 items*
+
+* First item
+* Second item
+* Third item
+
+
+2. *Write a single paragraph that demonstrates the use of italics, bold, bold italics, code, and includes a link. The paragraph does not have to make sense.*
+
+This is **first** line. Here is the **second** line. This *text* is really important. ***In this sentence I have used bold and italic together.*** In the next section type `LINES OF MY CODE`. Here is the link to see the [full text](https://fulltext.com)
+
+3. *Create a level 3 heading*
+
+### Heading level 3
+
+
+## R 
+
+#### Data Visualization Exercises
+
+1. (Q2) *How many rows are in mpg? How many columns?*
+
+234 rows and 11 columns
+
+1. (Q4) *Make a scatterplot of hwy vs cyl.*
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = hwy, y = cyl))
+```
+
+
+
+#### Workflow: basics Exercises
+
+1. (Q2) *Tweak each of the following R commands so that they run correctly (`library(tidyverse)` is correct):*
+
+```r
+library(tidyverse)
+ggplot(dota = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+fliter(mpg, cyl = 8)
+filter(diamond, carat > 3)
+```
+`ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))`
+typo mistake: dota changed to data
+
+`filter(mpg, cyl == 8)`
+'=' replaced with '=='
+Filter typo mistake
+
+`filter(diamonds, carat > 3)`
+"diamond" replaced with diamonds
+
+## Google Colab
+
+1. *What are the URLs of your Google Colab notebooks (both Python and R)?*
+
+[Google Colab URL](https://colab.research.google.com/drive/1KLX6zVpzqbDN66Ota8Z-KKF6S5siaYyS?usp=sharing)
+[ Practice exercises in Section 4.4.](https://colab.research.google.com/drive/1N2WSA3CBQyQ3OCTN7R84PRzedPSAl8im)
+
+## Tableau
+
+*Insert your the image of your final bar chart here*
+![Final bar chart](C:/ODU/Fall2021/DataVisualisation/HWs/HW1/Sales-in-the-Central.jpg)
+
+1. *What conclusions can you draw from the chart?*
+
+Over the time in the central region, the profit in technology goes higher, especially for phones while the profit for office supplies got negative.
+
+## Observable and Vega-Lite
+ 
+### A Taste of Observable
+
+1. *In the "New York City weather forecast" section, try replacing `Forecast: detailedForecast` with `Forecast: shortForecast`. Then press the blue play button  or use Shift-Return to run your change. What happens?*
+
+In the forecast section, there is short forecast instead of detail forecast.
+
+1. *Under the scatterplot of temperature vs. name, try replacing `markCircle()` with `markSquare()`. Then press the blue play button  or use Shift-Return to run your change. What happens? How about `markPoint()`?*
+
+In the plot there would be squares instead of circles when we use `markSquare()` and there would be points(empty circles) instead of circles when I use `markPoint()`.
+
+1. *Under "Pick a location, see the weather forecast", pick a location on the map.  Where was the point you picked near?*
+
+Kapowsin, WA.
+
+1. *The last visualization on this page is a "fancy" weather chart embedded from another notebook.  Click on the 3 dots next to that chart and choose 'Download PNG'.  Insert the PNG into your report.*
+
+![Fancy weather chart](C:/ODU/Fall2021/DataVisualisation/HWs/HW1/HW1-Observable.png)
+
+### Charting with Vega-Lite
+
+`markCircle()`
+
+1. *Pass an option of `{ size: 200 }` to `markCircle()`.*
+The size of circles increased (200 times larger)
+1. *Try `markSquare` instead of `markCircle`.*
+Circles are replaced by squares 
+1. *Try `markPoint({ shape: 'diamond' })`.*
+Empty diamonds plotted instead of filled circles
+
+`vl.x().fieldQ("Horsepower")`, ..
+
+1. *Change `Horsepower` to `Acceleration`*
+There is a new plot when x is Acceleration and y is Miles_per_Gallon.  
+1. *Swap what fields are displayed on the x- and y-axis*
+If swap the axis the plot shape rotated 90 degree and mirrored.
+`vl.tooltip().fieldN("Name")`
+
+1. *Change `Name` to `Origin`.*
+Nothing changed.
+
+Another example, `count()`
+
+1. *Remove the `vl.y().fieldN("Origin")` line.*
+There would be just one bar chart.
+1. *Replace `count()` with `average("Miles_per_Gallon")`.*
+The values for each bar changed.
+
+## References
+
+*Every report must list the references that you consulted while completing the assignment. If you consulted a webpage, you must include the URL.*
+
+* [Git tutorial](https://www.atlassian.com/git/tutorials/git-bash)
+* [Git Workshop](https://git.cs.odu.edu/tkennedy/git-workshop/-/wikis/Git-Workshop)
+* [Git](https://happygitwithr.com/hello-git.html)
+* [Ssh Key](https://happygitwithr.com/ssh-keys.html)
+* [Shell](https://happygitwithr.com/shell.html#shell)
+* [Git](https://r-pkgs.org/git.html#git-init)
+* [Git For Windows](https://www.youtube.com/watch?v=F_fPEMnr1OQ)
+* [R For Data Science](https://r4ds.had.co.nz/data-visualisation.html)
+* [Markdown Basic](https://www.markdownguide.org/basic-syntax)
+* [Markdown Cheatsheet](https://rmarkdown.rstudio.com/lesson-1.html)
+* [Markdown Image](https://www.earthdatascience.org/courses/earth-analytics/document-your-science/add-images-to-rmarkdown-report/)
+* [R For Data Science](https://r4ds.had.co.nz/data-visualisation.html#first-steps)
+* [R Basics](https://r4ds.had.co.nz/workflow-basics.html#practice)
+* [Google Colab](https://colab.research.google.com/drive/1yN0mKVc_Ssl8rQ74ShPnaMCnNhFc2__h)
+* [Tableau For Students](https://www.tableau.com/academic/students)
+* [Tableau tutorial](https://www.tableau.com/learn/tutorials/on-demand/getting-started)
+* [Observable](https://observablehq.com/@observablehq/a-taste-of-observable)
+* [Vega Lite](https://observablehq.com/@observablehq/vega-lite)
+
+

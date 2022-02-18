@@ -1,0 +1,254 @@
+Untitled
+================
+
+# \# Homework 2: Data Cleaning
+
+Maryam Salehi
+
+CS 625, Fall 2021
+
+### Part 1. Data Cleaning
+
+The data set consists of 1783 rows and the 5 columns: ![alt text
+here](Pictures/Picture1.png)
+
+By looking at the data we can see a lot of errors like: - Spell check -
+Repeated Names - Lower case and Upper case - Extra symbols
+
+#### Step1: (Cleaning “what kind of pet is this” column)
+
+![alt text here](Pictures/Picture2.png)
+
+Then I applied different methods and keying functions to edit the
+column.
+
+![alt text here](Pictures/Picture3.png)
+
+![alt text here](Pictures/Picture4.png)
+
+![alt text here](Pictures/Picture5.png)
+
+![alt text here](Pictures/Picture6.png)
+
+![alt text here](Pictures/Picture7.png)
+
+![alt text here](Pictures/Picture8.png)
+
+![alt text here](Pictures/Picture9.png)
+
+Then: Edit cells –&gt; Cluster and Edit –&gt; key collision
+
+![alt text here](Pictures/Picture10.png)
+
+Then I found that Bunny is in Rabbit category. The same is with Tortoise
+and Turtle, Gecko and Lizard, So I replaced them as follow:
+
+![alt text here](Pictures/Picture11.png)
+
+Also Beta fish and Goldfish are in the Fish category, so I replaced them
+with Fish. ![alt text here](Pictures/Picture12.png)
+
+Then manually did this:
+
+#### \*Kitten replaced with Cat
+
+#### \*Kitty replaced with Cat
+
+#### \*Puppy replaced with Dog
+
+#### \*Other: prairie dog supposed Other
+
+#### \*Dog, dog, dog , cat supposed Dog
+
+#### \*Leopard Lizard replaced with Lizard
+
+At the end I found that there are some blank cells in this column and I
+decided to remove them:
+
+![alt text here](Pictures/Picture13.png)
+
+![alt text here](Pictures/Picture14.png)
+
+At the end of first step I ended up with 1781 rows and 32 choices for
+“what kind of pet is this” column.
+
+#### Step2: (Cleaning up “Pet\`s age” column)
+
+First I went to Facet –&gt; Numeric facet to check the range of all
+pets. We can see that it\`s 0-25.
+
+![alt text here](Pictures/Picture15.png)
+
+Only Non-numeric should be checked:
+
+![alt text here](Pictures/Picture16.png)
+
+Then I went to Pet\`s age, Edit cells, Transform and I applied this:
+
+``` p
+value.replace("1/2",".5").replace("½",".5").replace(",","").replace("~","").replace("?","").replace("ish","").replace("old","")
+```
+
+![alt text here](Pictures/Picture17.png)
+
+After each time I made a changes in this column I checked to see all the
+data is numeric:
+
+![alt text here](Pictures/Picture18.png)
+
+Then I found some misspelling and errors and some extra words and I
+fixed them. Also there was inconsistency in the data (week,month,year)
+and I decided to convert all of them to year scale.
+
+``` p
+toNumber(value.replace("months","").replace("mos","").replace("mo","").replace("Months",""))/12.0
+```
+
+![alt text here](Pictures/Picture19.png)
+
+``` p
+toNumber(value.replace("weeks","").replace("week",""))/52.0
+```
+
+![alt text here](Pictures/Picture20.png)
+
+``` p
+value.replace("years","").replace("yesrs","").replace("year","")
+```
+
+![alt text here](Pictures/Picture22.png)
+
+``` p
+value.replace(" .5",".5").replace("about","").replace("About","").replace("Almost","").replace("+","").replace("Two","2").replace("Six","6")
+```
+
+![alt text here](Pictures/Picture23.png)
+
+``` p
+value.replace("approx.","").replace("(approx)","").replace("yrs","").replace("y","")
+```
+
+![alt text here](Pictures/Picture24.png)
+
+![alt text here](Pictures/Picture25.png)
+
+At the end I removed all the other not numeric values:
+
+![alt text here](Pictures/Picture26.png)
+
+![alt text here](Pictures/Picture27.png)
+
+#### Step3: (Cleaning up “Pet\`s breed” column)
+
+First I searched to see how many choices exists for this column so I
+went to Pet\`s breed, Facet, Text facet. We can see that at the
+beginning there are 702 choices for it:
+
+![alt text here](Pictures/Picture28.png)
+
+Then I cleaned the data the same way I did for Pet\`s kinds, as follows:
+
+![alt text here](Pictures/Picture29.png)
+
+![alt text here](Pictures/Picture30.png)
+
+![alt text here](Pictures/Picture31.png)
+
+![alt text here](Pictures/Picture32.png)
+
+![alt text here](Pictures/Picture33.png)
+
+![alt text here](Pictures/Picture34.png)
+
+![alt text here](Pictures/Picture35.png)
+
+![alt text here](Pictures/Picture36.png)
+
+![alt text here](Pictures/Picture37.png)
+
+![alt text here](Pictures/Picture38.png)
+
+![alt text here](Pictures/Picture39.png)
+
+![alt text here](Pictures/Picture40.png)
+
+### Part 2. Analyze Cleaned Data
+
+### 1. How many types (kinds) of pets are there?
+
+“What kinds of pet is this”–&gt; Facet –&gt; Text facet As we can see
+there are 20 choices after cleaning the data:
+
+![alt text here](Pictures/Picture41.png)
+
+### 2. How many dogs?
+
+1056
+
+![alt text here](Pictures/Picture42.png)
+
+### 3. How many breeds of dogs?
+
+335
+
+![alt text here](Pictures/Picture43.png)
+
+### 4. What’s the most popular dog breed?
+
+168
+
+![alt text here](Pictures/Picture44.png)
+
+### 5. What’s the age range of the dogs?
+
+0-25
+
+![alt text here](Pictures/Picture45.png)
+
+![alt text here](Pictures/Picture46.png)
+
+![alt text here](Pictures/Picture47.png)
+
+![alt text here](Pictures/Picture48.png)
+
+![alt text here](Pictures/Picture49.png)
+
+### 6. What’s the age range of the guinea pigs?
+
+1-5
+
+![alt text here](Pictures/Picture50.png)
+
+### 7. What is the oldest pet?
+
+First Dog, Golden Retriever and then Cat, Cat
+
+![alt text here](Pictures/Picture51.png)
+
+### 8. Which are more popular, betta fish or goldfish? How many of each?
+
+10 Beta fish 3 Goldfish
+
+![alt text here](Pictures/Picture52.png)
+
+### 9. What’s the most popular everyday name for a cat?
+
+Kitty
+
+![alt text here](Pictures/Picture53.png)
+
+### 10. What’s the most popular full name for a dog?
+
+Sadie
+
+![alt text here](Pictures/Picture54.png)
+
+## References
+
+<https://github.com/odu-cs625-datavis/public/blob/main/fall21/OpenRefine-Tutorial-enipedia.pdf>
+<http://web.archive.org/web/20190105063215/enipedia.tudelft.nl/wiki/OpenRefine_Tutorial>
+<https://github.com/odu-cs625-datavis/public/blob/main/fall21/Wk2-OpenRefine-tutorial.md>
+<https://r4ds.had.co.nz/r-markdown.html>
+<https://r4ds.had.co.nz/introduction.html#running-r-code>
+<https://github.com/jgolbeck/petnames>
+
